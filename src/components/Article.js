@@ -1,12 +1,14 @@
 import React, { PropTypes } from "react";
+// Components
+import Tag from "./Tag";
 
 const Article = ({ title, author, tags, content }) => {
   return (
     <article className="article">
-      <h3>{title}</h3>
-      <div>{author}</div>
-      <div>{tags}</div>
-      <p>{content}</p>
+      <div className="title">{title}</div>
+      <div className="author">{author}</div>
+      <div className="content">{content}</div>
+      <Tag tags={tags} />
     </article>
   );
 };

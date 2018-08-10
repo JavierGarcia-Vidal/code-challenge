@@ -1,10 +1,13 @@
-import React from "react";
+import React, { PropTypes } from "react";
 
-const Footer = () => (
+const Footer = ({ copyright }) => (
   <footer className="footer">
-    <div>Realizado por: Javier García-Vidal Simón</div>
-    <div> 2018</div>
+    <h5 className="copyright">{copyright}</h5>
   </footer>
 );
+
+Footer.propTypes = {
+  copyright: PropTypes.string
+};
 
 export default Footer;

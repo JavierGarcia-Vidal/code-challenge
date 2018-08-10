@@ -4,7 +4,7 @@ import Article from "./Article";
 
 const Main = ({ articles }) => {
   return (
-    <main className="content">
+    <main className="articles">
       {articles.map((article, index) => (
         <Article
           title={article.title}

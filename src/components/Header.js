@@ -2,7 +2,7 @@ import React, { PropTypes } from "react";
 
 const Header = ({ title }) => (
   <header className="header">
-    <h1>{title}</h1>
+    <h2 className="head">{title}</h2>
   </header>
 );
 

@@ -1,13 +1,14 @@
 .App {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 10vw 1fr 10vw;
-  font-family: sans-serif;
+  grid-template-rows: 6rem 1fr 10rem;
+  font-family: "Open Sans", sans-serif;
   text-align: center;
 }
 
 header,
 footer {
+  display: grid;
   grid-column: 1 / span 4;
 }
 
@@ -15,24 +16,84 @@ main {
   grid-column: 1 / span 4;
   display: grid;
   grid-gap: 2em;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(1, 1fr);
+  grid-auto-rows: auto;
 }
 
 .header {
-  background: grey;
+  background: #0e6b7e;
+  padding: 1rem;
+}
+
+.head {
+  place-self: center stretch;
+  color: #232323;
 }
 
 .footer {
-  background: grey;
+  background: #0e6b7e;
+  padding: 1rem;
 }
 
-.content {
+.copyright {
+  place-self: center stretch;
+  color: #232323;
+}
+
+.articles {
   padding: 2em;
-  background: lightgrey;
+  background: #94dae9;
 }
 
 .article {
-  background: darkgrey;
-  padding: 1em;
+  background: #0e6b7e;
   border-radius: 5px;
+  border: 5px solid #0e6b7e;
+}
+
+.title {
+  background: #0e6b7e;
+  color: #94dae9;
+  padding: 1.5rem;
+  border-bottom: 2px solid #0e6b7e;
+}
+
+.author {
+  background: #21a4bf;
+  color: #0e6b7e;
+  padding: 0.5rem 1rem;
+  border-bottom: 2px solid #0e6b7e;
+}
+
+.tags {
+  background: #21a4bf;
+  color: #0e6b7e;
+  padding: 1rem;
+  border-top: 2px solid #0e6b7e;
+}
+
+.tag {
+  background: #94dae9;
+  font-size: 0.6rem;
+  padding: 0.5rem;
+  margin: 0 0.3rem;
+  border-radius: 1rem;
+}
+
+.content {
+  background: #94dae9;
+  color: #0e6b7e;
+  padding: 1.5rem;
+}
+
+@media only screen and (min-width: 45em) and (max-width: 68.6875em) {
+  main {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (min-width: 68.75em) {
+  main {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }

@@ -31,9 +31,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
+        <Header title="TEST REACT COMPONENTS" />
         <Main articles={this.state.articles} />
-        <Footer />
+        <Footer copyright="Copyright © 2018 Javier García-Vidal Simón." />
       </div>
     );
   }

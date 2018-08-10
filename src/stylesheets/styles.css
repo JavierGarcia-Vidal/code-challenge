@@ -1,0 +1,38 @@
+.App {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 10vw 1fr 10vw;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+header,
+footer {
+  grid-column: 1 / span 4;
+}
+
+main {
+  grid-column: 1 / span 4;
+  display: grid;
+  grid-gap: 2em;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.header {
+  background: grey;
+}
+
+.footer {
+  background: grey;
+}
+
+.content {
+  padding: 2em;
+  background: lightgrey;
+}
+
+.article {
+  background: darkgrey;
+  padding: 1em;
+  border-radius: 5px;
+}

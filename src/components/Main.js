@@ -1,10 +1,12 @@
 import React, { PropTypes } from "react";
 // Components
+import Form from "./Form";
 import Article from "./Article";
 
 const Main = ({ articles }) => {
   return (
     <main className="articles">
+      <Form />
       {articles.map((article, index) => (
         <Article
           title={article.title}

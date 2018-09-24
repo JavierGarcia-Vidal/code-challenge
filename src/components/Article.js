@@ -6,9 +6,11 @@ const Article = ({ title, author, tags, content }) => {
   return (
     <article className="article">
       <div className="title">{title}</div>
-      <div className="author">{author}</div>
-      <div className="content">{content}</div>
-      <Tag tags={tags} />
+      <div className="info">
+        <div className="author">{author}</div>
+        <div className="content">{content}</div>
+        <Tag tags={tags} />
+      </div>
     </article>
   );
 };

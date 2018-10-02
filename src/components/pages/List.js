@@ -1,59 +1,66 @@
 //#################################################################
-//#############  Dependecies / Components / Resources  ############
+//#############|  Dependecies / Components / Resources  |##########
 //#################################################################
-import React, { PropTypes } from "react";
+import React, { Component } from "react";
 import { css } from "emotion";
+// Libraries
+import request from "../../library/request";
+import { ARTICLES_QUERY } from "../../library/queries";
+// Components
+import Article from "../Article";
+// Data Base
+import { articles } from "../../database/db.json";
 
 //#################################################################
-//############################  Styles  ###########################
+//############################|  Styles  |#########################
 //#################################################################
-// List Page Styles
-const list = css`
+// List Colors
+const backgroundColor = "#cccccc";
+// List Styles
+const _list = css`
+  grid-column: 1 / span 4;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 6rem 1fr 10rem;
-  font-family: "Open Sans", sans-serif;
-  text-align: center;
-  input {
-    font-family: "Open Sans", sans-serif;
-  }
-  a {
-    text-decoration: none;
-  }
+  grid-gap: 2em;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-auto-rows: auto;
+  padding: 2em;
+  background-color: ${backgroundColor};
 `;
 //#################################################################
-//##########################  Camponent  ##########################
+//##########################|  Camponent  |########################
 //#################################################################
-const List = ({ id, title, author, tags, content }) => {
-  return (
-    <article className="article">
-      <div className="navigation">
-        <span className="id">{id}</span>
-        <a href="/update/{id}" className="update">
-          <MaterialIcon icon="edit" size={15} />
-        </a>
-        <a href="/delete/{id}" className="delete">
-          <MaterialIcon icon="close" size={15} />
-        </a>
-      </div>
-      <a href="/{id}">
-        <div className="title">{title}</div>
-      </a>
-      <div className="info">
-        <div className="author">{author}</div>
-        <div className="content">{content}</div>
-        <Tag tags={tags} />
-      </div>
-    </article>
-  );
-};
+class List extends Component {
+  // definition
+  constructor(props) {
+    super(props);
+    this.state = {
+      articles
+    };
+  }
 
-List.propTypes = {
-  id: PropTypes.string,
-  title: PropTypes.string,
-  author: PropTypes.string,
-  tags: PropTypes.arrayOf(PropTypes.string),
-  content: PropTypes.string
-};
+  // lifecycle
+  //componentWillMount() {
+  //  request(ARTICLES_QUERY).then(response => {
+  //    this.setState({ articles: response.data.articles });
+  //  });
+  //}
+
+  // Renders
+  render() {
+    return (
+      <div className={_list}>
+        {articles.map((article, index) => (
+          <Article
+            id={article.id}
+            title={article.title}
+            author={article.author}
+            tags={article.tags}
+            content={article.content}
+          />
+        ))}
+      </div>
+    );
+  }
+}
 
 export default List;

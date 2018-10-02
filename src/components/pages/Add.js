@@ -3,34 +3,30 @@
 //#################################################################
 import React, { Component } from "react";
 import { css } from "emotion";
-// Libraries
-import request from "../../library/request";
-import { ARTICLES_QUERY } from "../../library/queries";
 // Components
 import Form from "../Form";
-import Article from "../Article";
 // Data Base
 import { articles } from "../../database/db.json";
 
 //#################################################################
 //############################|  Styles  |#########################
 //#################################################################
-// Detail Colors
+// Add Colors
 const backgroundColor = "#cccccc";
-// Detail Styles
-const _detail = css`
+// Add Styles
+const _add = css`
   grid-column: 1 / span 4;
   display: grid;
   grid-gap: 2em;
-  grid-template-columns: repeat(auto-fill, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   grid-auto-rows: auto;
-  padding: 2em;
+  padding: 1em;
   background-color: ${backgroundColor};
 `;
 //#################################################################
 //##########################|  Camponent  |########################
 //#################################################################
-class Detail extends Component {
+class Add extends Component {
   // definition
   constructor(props) {
     super(props);
@@ -48,23 +44,12 @@ class Detail extends Component {
 
   // Renders
   render() {
-    const { params } = this.props;
-    console.log(params);
-    const article =
-      this.state.articles.find(article => article.id == params.id) || {};
-    console.log(article);
     return (
-      <div className={_detail}>
-        <Article
-          id={article.id}
-          title={article.title}
-          author={article.author}
-          tags={article.tags}
-          content={article.content}
-        />
+      <div className={_add}>
+        <Form />
       </div>
     );
   }
 }
 
-export default Detail;
+export default Add;

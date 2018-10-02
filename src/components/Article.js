@@ -1,7 +1,8 @@
 //#################################################################
-//#############  Dependecies / Components / Resources  ############
+//#############|  Dependecies / Components / Resources  |##########
 //#################################################################
 import React, { PropTypes } from "react";
+import { Link, formatPattern } from "react-router";
 import { css } from "emotion";
 // Components
 import Tag from "./Tag";
@@ -9,7 +10,7 @@ import Tag from "./Tag";
 import MaterialIcon, { colorPalette } from "material-icons-react";
 
 //#################################################################
-//############################  Styles  ###########################
+//############################|  Styles  |#########################
 //#################################################################
 // Articles Colors
 const articlesBackgroundColor = "#393e46";
@@ -103,23 +104,23 @@ const _delete = css`
   }
 `;
 //#################################################################
-//##########################  Camponent  ##########################
+//##########################|  Camponent  |########################
 //#################################################################
 const Article = ({ id, title, author, tags, content }) => {
   return (
     <article className={_article}>
       <div className={_navigation}>
         <span className={_id}>{id}</span>
-        <a href="/update/{id}" className={_update}>
+        <Link to={`/update/${id}`} className={_update}>
           <MaterialIcon icon="edit" size={15} />
-        </a>
-        <a href="/delete/{id}" className={_delete}>
+        </Link>
+        <Link to={`/delete/${id}`} className={_delete}>
           <MaterialIcon icon="close" size={15} />
-        </a>
+        </Link>
       </div>
-      <a href="/{id}">
+      <Link to={`/${id}`}>
         <div className={_title}>{title}</div>
-      </a>
+      </Link>
       <div className="info">
         <div className={_author}>{author}</div>
         <div className={_content}>{content}</div>

@@ -88,7 +88,17 @@ const _inputSubmit = css`
 //#################################################################
 //##########################|  Camponent  |########################
 //#################################################################
-const Input = ({ key, form, type, name, input, placeholder, title, value }) => {
+const Input = ({
+  key,
+  form,
+  type,
+  name,
+  input,
+  placeholder,
+  title,
+  value,
+  checkboxes
+}) => {
   const getInputClass = input => {
     switch (input) {
       case "_inputTitle":
@@ -103,7 +113,16 @@ const Input = ({ key, form, type, name, input, placeholder, title, value }) => {
         return _inputSubmit;
     }
   };
-  const getInputType = (key, type, name, input, placeholder, title, value) => {
+  const getInputType = (
+    key,
+    type,
+    name,
+    input,
+    placeholder,
+    title,
+    value,
+    checkboxes
+  ) => {
     let inputClass = getInputClass(input);
     if (type === "textarea")
       return (
@@ -112,6 +131,7 @@ const Input = ({ key, form, type, name, input, placeholder, title, value }) => {
           name={name}
           className={inputClass}
           placeholder={placeholder}
+          value={value}
         />
       );
     else if (type === "submit")
@@ -124,9 +144,9 @@ const Input = ({ key, form, type, name, input, placeholder, title, value }) => {
         />
       );
     else if (type === "checkbox")
-      return value.map((tag, index) => (
+      return checkboxes.map((tag, index) => (
         <div className={inputClass}>
-          <input type={type} className={_inputTag} value={tag.toLowerCase()} />
+          <input type={type} className={_inputTag} value={tag} checked={true} />
           {tag}
         </div>
       ));
@@ -137,6 +157,7 @@ const Input = ({ key, form, type, name, input, placeholder, title, value }) => {
           name={name}
           className={inputClass}
           placeholder={placeholder}
+          value={value}
         />
       );
   };
@@ -147,7 +168,8 @@ const Input = ({ key, form, type, name, input, placeholder, title, value }) => {
     input,
     placeholder,
     title,
-    value
+    value,
+    checkboxes
   );
 
   return <div className={form}>{inputComponent}</div>;
@@ -160,7 +182,8 @@ Input.propTypes = {
   input: PropTypes.string,
   placeholder: PropTypes.string,
   title: PropTypes.string,
-  value: PropTypes.arrayOf(PropTypes.string)
+  value: PropTypes.arrayOf(PropTypes.string),
+  checkboxes: PropTypes.arrayOf(PropTypes.string)
 };
 
 export default Input;

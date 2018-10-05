@@ -1,12 +1,10 @@
 //#################################################################
 //#############|  Dependecies / Components / Resources  |##########
 //#################################################################
-import React, { Component } from "react";
+import React, { PropTypes } from "react";
 import { css } from "emotion";
 // Components
 import Form from "../Form";
-// Data Base
-import { articles } from "../../database/db.json";
 
 //#################################################################
 //############################|  Styles  |#########################
@@ -26,30 +24,14 @@ const _add = css`
 //#################################################################
 //##########################|  Camponent  |########################
 //#################################################################
-class Add extends Component {
-  // definition
-  constructor(props) {
-    super(props);
-    this.state = {
-      articles
-    };
-  }
+const Add = ({ article }) => {
+  return (
+    <main className={_add}>
+      <Form article={article} />
+    </main>
+  );
+};
 
-  // lifecycle
-  //componentWillMount() {
-  //  request(ARTICLES_QUERY).then(response => {
-  //    this.setState({ articles: response.data.articles });
-  //  });
-  //}
-
-  // Renders
-  render() {
-    return (
-      <div className={_add}>
-        <Form />
-      </div>
-    );
-  }
-}
+Add.propTypes = { article: PropTypes.arrayOf(PropTypes.object) };
 
 export default Add;

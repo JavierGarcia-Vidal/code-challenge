@@ -27,6 +27,12 @@ const _menu = css`
   background-color: ${menuBackgroundColor};
   border-top: 10px solid ${menuBorderColor}
 `;
+// Link Styles
+const _link = css`
+  display: grid;
+  place-self: start stretch;
+  background-color: ${activeBackgroundColor};
+`;
 // Active Link Styles
 const _active = css` 
   background-color: ${activeBackgroundColor};
@@ -34,8 +40,20 @@ const _active = css`
   border-bottom-right-radius: 1rem;
   border-bottom-left-radius: 1rem;
 `;
-// Inactive Link Styles
-const _inactive = css`
+// Inactive Left Link Styles
+const _inactiveLeft = css`
+  border-top-right-radius: 1rem;
+  background-color: ${inactiveBackgroundColor};
+  border-top: 5px solid ${inactiveBackgroundColor};
+  place-self: start stretch;
+  &:hover {
+    border-top: 5px solid ${inactiveHoverBackgroundColor};
+    background-color: ${inactiveHoverBackgroundColor};
+  }
+`;
+// Inactive Right Link Styles
+const _inactiveRight = css`
+  border-top-left-radius: 1rem;
   background-color: ${inactiveBackgroundColor};
   border-top: 5px solid ${inactiveBackgroundColor};
   place-self: start stretch;
@@ -49,15 +67,19 @@ const _inactive = css`
 //#################################################################
 const Menu = () => (
   <nav className={_menu}>
-    <Link to="/about" className={_inactive}>
-      <MaterialIcon icon="help" color="#f7f7f7" size={25} />
-    </Link>
+    <div className={_link}>
+      <Link to="/about" className={_inactiveLeft}>
+        <MaterialIcon icon="help" color="#f7f7f7" size={25} />
+      </Link>
+    </div>
     <Link to="/" className={_active}>
       <MaterialIcon icon="home" size={45} />
     </Link>
-    <Link to="/add" className={_inactive}>
-      <MaterialIcon icon="add_circle" color="#f7f7f7" size={25} />
-    </Link>
+    <div className={_link}>
+      <Link to="/add" className={_inactiveRight}>
+        <MaterialIcon icon="add_circle" color="#f7f7f7" size={25} />
+      </Link>
+    </div>
   </nav>
 );
 

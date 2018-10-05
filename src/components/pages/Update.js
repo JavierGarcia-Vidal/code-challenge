@@ -1,12 +1,12 @@
 //#################################################################
 //#############|  Dependecies / Components / Resources  |##########
 //#################################################################
-import React, { PropTypes } from "react";
+import React, { Component } from "react";
 import { css } from "emotion";
 // Components
 import Form from "../Form";
-import Article from "../Article";
-
+// Data Base
+import { articles } from "../../database/db.json";
 //#################################################################
 //############################|  Styles  |#########################
 //#################################################################
@@ -25,14 +25,34 @@ const _update = css`
 //#################################################################
 //##########################|  Camponent  |########################
 //#################################################################
-const Update = ({ article }) => {
-  return (
-    <main className={_update}>
-      <Form article={article} />
-    </main>
-  );
-};
+class Update extends Component {
+  // definition
+  constructor(props) {
+    super(props);
+    this.state = {
+      articles
+    };
+  }
 
-Update.propTypes = { articles: PropTypes.arrayOf(PropTypes.object) };
+  // lifecycle
+  //componentWillMount() {
+  //  request(ARTICLES_QUERY).then(response => {
+  //    this.setState({ articles: response.data.articles });
+  //  });
+  //}
+
+  // Renders
+  render() {
+    const { params } = this.props;
+    const article =
+      this.state.articles.find(article => article.id == params.id) || {};
+    console.log(article);
+    return (
+      <main className={_update}>
+        <Form article={article} />
+      </main>
+    );
+  }
+}
 
 export default Update;

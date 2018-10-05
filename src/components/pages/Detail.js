@@ -49,10 +49,8 @@ class Detail extends Component {
   // Renders
   render() {
     const { params } = this.props;
-    console.log(params);
     const article =
       this.state.articles.find(article => article.id == params.id) || {};
-    console.log(article);
     return (
       <div className={_detail}>
         <Article

@@ -1,7 +1,7 @@
 //#################################################################
 //#############|  Dependecies / Components / Resources  |##########
 //#################################################################
-import React from "react";
+import React, { PropTypes } from "react";
 import { css } from "emotion";
 // Components
 import Input from "./Input";
@@ -30,6 +30,12 @@ const _form = css`
   background-color: ${formBackgroundColor};
   border-radius: 1rem;
   border: 0.5rem solid ${formBorderColor};
+`;
+// Id Styles
+const _formId = css`
+  background-color: ${titleBackgroundColor};
+  color: ${titleTextColor};
+  padding: 0.5rem 1.5rem;
 `;
 // Title Styles
 const _formTitle = css`
@@ -71,28 +77,38 @@ const _formSubmit = css`
 //#################################################################
 //##########################|  Camponent  |########################
 //#################################################################
-const Form = () => {
+const Form = ({ article }) => {
   const tags = [
-    "Videojuegos",
-    "Online",
-    "PC",
-    "Actualidad",
-    "Cine",
-    "Libros",
-    "eBooks",
-    "Deportes",
-    "Actualidad",
-    "Estilo de vida",
-    "salud"
+    "videojuegos",
+    "online",
+    "pc",
+    "actualidad",
+    "cine",
+    "libros",
+    "ebooks",
+    "deportes",
+    "actualidad",
+    "salud",
+    "ingenieria",
+    "mecanica"
   ];
   return (
     <form className={_form}>
+      <Input
+        form={_formId}
+        type="text"
+        name="title"
+        input="_inputTitle"
+        placeholder="Introduzca un id ..."
+        value={article.id}
+      />
       <Input
         form={_formTitle}
         type="text"
         name="title"
         input="_inputTitle"
         placeholder="Introduzca un titulo ..."
+        value={article.title}
       />
       <div className="info">
         <Input
@@ -101,6 +117,7 @@ const Form = () => {
           name="author"
           input="_inputAuthor"
           placeholder="Introduzca un autor ..."
+          value={article.author}
         />
         <Input
           form={_formContent}
@@ -108,13 +125,15 @@ const Form = () => {
           name="content"
           input="_inputContent"
           placeholder="Introduzca un contenido ..."
+          value={article.content}
         />
         <Input
           form={_formTags}
           type="checkbox"
           name="tags"
           input="_inputTags"
-          value={tags}
+          value={article.tags}
+          checkboxes={tags}
         />
         <Input
           form={_formSubmit}
@@ -127,5 +146,7 @@ const Form = () => {
     </form>
   );
 };
+
+Form.propTypes = { article: PropTypes.arrayOf(PropTypes.object) };
 
 export default Form;

@@ -9,8 +9,8 @@ import Update from "../components/pages/Update";
 module.exports = (
   <Route path="/" component={App}>
     <IndexRoute component={List} />
-    <Route path="/:id" component={Detail} />
     <Route path="/add" component={Add} />
-    <Route path="/edit/:id" component={Update} />
+    <Route path="/:id" component={Detail} />
+    <Route path="/update/:id" component={Update} />
   </Route>
 );
